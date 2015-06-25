@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		problems.txt = problems.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericSinglyLinkedListOperations.UnitTests", "GenericSinglyLynkedListOperations\GenericSinglyLinkedListOperations.UnitTests.csproj", "{4BD91524-BE1A-40DA-8812-F8BCC982ED02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListUtilities.UnitTests", "GenericSinglyLynkedListOperations\LinkedListUtilities.UnitTests.csproj", "{4BD91524-BE1A-40DA-8812-F8BCC982ED02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -10,14 +10,14 @@ namespace ArrayUtilities.UnitTests
     [TestFixture]
     public class ArrayOperationsTests
     {
-        private IIntersection _arrayIntersection;
+        private IArrayOperations _arrayIntersection;
         private int[] _firstArray;
         private int[] _secondArray;
 
         [SetUp]
         public void SetupUnitTests()
         {
-            _arrayIntersection = new Intersection();
+            _arrayIntersection = new ArrayOperations();
         }
 
         [Test]
