@@ -16,8 +16,7 @@ namespace ArrayOperations
 
         public int[] GetArrayIntersection(int[] firstArray, int[] secondArray)
         {
-
-
+            var result = firstArray.Intersect(secondArray);
             return new int[0];
         }
     }

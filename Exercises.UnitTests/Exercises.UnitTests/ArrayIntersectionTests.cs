@@ -39,5 +39,15 @@ namespace ArrayOperations.UnitTests
             var actual = _arrayIntersection.GetArrayIntersection(_firstArray, _secondArray);
             Assert.AreEqual(expected, actual);
         }
+
+        [Test]
+        public void OneArrayIsNullAndOtherWithNumber()
+        {
+            _firstArray = new int[5] { 1, 2, 3, 4, 5 };
+            _secondArray = null;
+            int[] expected = new int[0];
+            var actual = _arrayIntersection.GetArrayIntersection(_firstArray, _secondArray);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
