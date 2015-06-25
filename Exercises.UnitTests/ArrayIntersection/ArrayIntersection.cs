@@ -21,7 +21,6 @@ namespace ArrayOperations
                 var result = firstArray.Intersect(secondArray).ToArray();
                 return result;
             }
-
             return new int[0];
         }
     }
