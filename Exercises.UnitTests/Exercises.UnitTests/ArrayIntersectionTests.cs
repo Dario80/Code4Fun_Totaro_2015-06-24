@@ -18,14 +18,24 @@ namespace ArrayOperations.UnitTests
         public void SetupUnitTests()
         {
             _arrayIntersection = new Intersection();
-            _firstArray = new int[0];
-            _secondArray = new int[0];
-
         }
+
         [Test]
         public void NeitherOfTwoArrayHaveNumber()
         {
+            _firstArray = new int[0];
+            _secondArray = new int[0];
             int[] expected =  new int[0];
+            var actual = _arrayIntersection.GetArrayIntersection(_firstArray, _secondArray);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void OneArrayWithNumberAndOtherWithoutNumber()
+        {
+            _firstArray = new int[5] { 1, 2, 3, 4, 5 };
+            _secondArray = new int[0];
+            int[] expected = new int[0];
             var actual = _arrayIntersection.GetArrayIntersection(_firstArray, _secondArray);
             Assert.AreEqual(expected, actual);
         }

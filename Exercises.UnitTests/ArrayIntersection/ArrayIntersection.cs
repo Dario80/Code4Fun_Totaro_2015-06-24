@@ -16,6 +16,8 @@ namespace ArrayOperations
 
         public int[] GetArrayIntersection(int[] firstArray, int[] secondArray)
         {
+
+
             return new int[0];
         }
     }
