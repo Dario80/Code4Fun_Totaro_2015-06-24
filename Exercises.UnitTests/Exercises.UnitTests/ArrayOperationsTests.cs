@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArrayOperations.UnitTests
+namespace ArrayUtilities.UnitTests
 {
     [TestFixture]
-    public class ArrayIntersectionTests
+    public class ArrayOperationsTests
     {
         private IIntersection _arrayIntersection;
         private int[] _firstArray;
