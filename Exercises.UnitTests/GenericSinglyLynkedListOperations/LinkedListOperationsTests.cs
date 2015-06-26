@@ -42,6 +42,18 @@ namespace LinkedListUtilities.UnitTests
             Assert.AreEqual(expected, actual);
         }
 
-
+        [Test]
+        public void GenericSinglyLinkedListCountEqualsToN()
+        {
+            _singlyLinkedList.Add(1);
+            _singlyLinkedList.Add(2);
+            _singlyLinkedList.Add(3);
+            _singlyLinkedList.Add(4);
+            _singlyLinkedList.Add(5);
+            _index = 5;
+            int expected = 1;
+            var actual = _linkedListOperations.GetNthElementFromLast(_singlyLinkedList, _index);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
