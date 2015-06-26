@@ -118,12 +118,12 @@ namespace LinkedListUtilities
             get
             {
                 if (index < 0)
-                    throw new ArgumentOutOfRangeException();
+                    return default(T);
                 ListNode<T> currentNode = firstNode;
                 for (int i = 0; i < index; i++)
                 {
                     if (currentNode.Next == null)
-                        throw new ArgumentOutOfRangeException();
+                        return default(T);
                     currentNode = currentNode.Next;
                 }
                 return currentNode.Item;

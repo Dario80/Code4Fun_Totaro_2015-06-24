@@ -125,5 +125,38 @@ namespace LinkedListUtilities.UnitTests
             var actual = _linkedListOperationsString.GetNthElementFromLast(_singlyLinkedListString, _index);
             Assert.AreEqual(expected, actual);
         }
+
+
+        [Test]
+        public void SinglyLinkedListIntWithNEqualTo0()
+        {
+            _singlyLinkedListInt.Add(82);
+            _singlyLinkedListInt.Add(55);
+            _singlyLinkedListInt.Add(78);
+            _singlyLinkedListInt.Add(92);
+            _singlyLinkedListInt.Add(12);
+            _singlyLinkedListInt.Add(44);
+            _singlyLinkedListInt.Add(51);
+            _index = 0;
+            int expected = 0;
+            var actual = _linkedListOperationsInt.GetNthElementFromLast(_singlyLinkedListInt, _index);
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SinglyLinkedListStringWithNEqualTo0()
+        {
+            _singlyLinkedListString.Add("82");
+            _singlyLinkedListString.Add("55");
+            _singlyLinkedListString.Add("78");
+            _singlyLinkedListString.Add("92");
+            _singlyLinkedListString.Add("12");
+            _singlyLinkedListString.Add("44");
+            _singlyLinkedListString.Add("51");
+            int _index = 0;
+            string expected = null;
+            var actual = _linkedListOperationsString.GetNthElementFromLast(_singlyLinkedListString, _index);
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
