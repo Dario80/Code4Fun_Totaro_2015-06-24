@@ -379,6 +379,10 @@ namespace LinkedListUtilities
     {
         public T GetNthElementFromLast(SinglyLinkedList<T> singlyLinkedList, int index)
         {
+            if (singlyLinkedList != null && !singlyLinkedList.IsEmpty && singlyLinkedList.Count >= index )
+            {
+                return singlyLinkedList[singlyLinkedList.Count - index];
+            }
             return default(T);
         }
     }
