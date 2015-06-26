@@ -377,10 +377,6 @@ namespace LinkedListUtilities
 
     public class LinkedListOperations<T> : ILinkedListOperations<T>
     {
-        public SinglyLinkedList<T> _sLinkedList { get; set; }
-
-        
-
         public T GetNthElementFromLast(SinglyLinkedList<T> singlyLinkedList, int index)
         {
             return default(T);

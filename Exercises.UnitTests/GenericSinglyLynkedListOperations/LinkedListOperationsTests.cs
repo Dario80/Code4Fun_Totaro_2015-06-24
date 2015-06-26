@@ -30,5 +30,18 @@ namespace LinkedListUtilities.UnitTests
             var actual = _linkedListOperations.GetNthElementFromLast(_singlyLinkedList, _index);
             Assert.AreEqual(expected, actual);
         }
+
+
+        [Test]
+        public void GenericSinglyLinkedListIsNull()
+        {
+            _singlyLinkedList = null;
+            _index = 5;
+            int expected = 0;
+            var actual = _linkedListOperations.GetNthElementFromLast(_singlyLinkedList, _index);
+            Assert.AreEqual(expected, actual);
+        }
+
+
     }
 }
