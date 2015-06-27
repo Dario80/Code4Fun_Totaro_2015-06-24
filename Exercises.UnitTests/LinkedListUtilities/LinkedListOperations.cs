@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace LinkedListUtilities
 {
+    /// <summary>
+    /// Linked list operations interface
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface ILinkedListOperations<T>
     {
         T GetNthElementFromLast(SinglyLinkedList<T> singlyLinkedList, int index);
     }
 
     /// <summary>
-    /// Generic ListNode class - avoiding boxing unboxing here by using generic implementation
+    /// Generic ListNode class
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ListNode<T>
@@ -20,7 +24,7 @@ namespace LinkedListUtilities
         private ListNode<T> next;
         private T item;
         /// <summary>
-        /// Property to hold pointer to next ListNode - Self containing object
+        /// Property to hold pointer to next ListNode
         /// </summary>
 
         public ListNode<T> Next
@@ -60,25 +64,11 @@ namespace LinkedListUtilities
             this.item = item;
             this.next = next;
         }
-
-        /// <summary>
-        /// Overriding ToString to return a string value for the item in the node
-        /// </summary>
-        /// <returns></returns>
-
-        public override string ToString()
-        {
-            if (item == null)
-                return string.Empty;
-            return item.ToString();
-        }
     }
 
     /// <summary>
     /// SinglyLinkedList class for generic implementation of LinkedList. 
-    /// Again, avoiding boxing unboxing here and using ICollection interface members. 
-    /// Believe this can be useful when applying other 
-    /// operations such as sorting, searching etc. 
+    /// Using ICollection interface members.  
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class SinglyLinkedList<T> : ICollection<T>
@@ -162,28 +152,6 @@ namespace LinkedListUtilities
             firstNode = lastNode = null;
         }
 
-        /// <summary>
-        /// Operation inserts item at the front of the list
-        /// </summary>
-        /// <param name="item"></param>
-
-        public void InsertAtFront(T item)
-        {
-            lock (this)
-            {
-                if (IsEmpty)
-                    firstNode = lastNode = new ListNode<T>(item);
-                else
-                    firstNode = new ListNode<T>(item, firstNode);
-                count++;
-            }
-        }
-
-        /// <summary>
-        /// Operation inserts item at the back of the list
-        /// </summary>
-        /// <param name="item"></param>
-
         public void InsertAtBack(T item)
         {
             lock (this)
@@ -193,54 +161,6 @@ namespace LinkedListUtilities
                 else
                     lastNode = lastNode.Next = new ListNode<T>(item);
                 count++;
-            }
-        }
-
-        /// <summary>
-        /// Operation removes item from the front of the list
-        /// </summary>
-        /// <returns></returns>
-
-        public object RemoveFromFront()
-        {
-            lock (this)
-            {
-                if (IsEmpty)
-                    throw new ApplicationException("list is empty");
-                object removedData = firstNode.Item;
-                if (firstNode == lastNode)
-                    firstNode = lastNode = null;
-                else
-                    firstNode = firstNode.Next;
-                count--;
-                return removedData;
-            }
-        }
-
-        /// <summary>
-        /// Operation removes item from the back of the list
-        /// </summary>
-        /// <returns></returns>
-
-        public object RemoveFromBack()
-        {
-            lock (this)
-            {
-                if (IsEmpty)
-                    throw new ApplicationException("list is empty");
-                object removedData = lastNode.Item;
-                if (firstNode == lastNode)
-                    firstNode = lastNode = null;
-                else
-                {
-                    ListNode<T> currentNode = firstNode;
-                    while (currentNode.Next != lastNode)
-                        currentNode = currentNode.Next;
-                    lastNode = currentNode;
-                    currentNode.Next = null;
-                }
-                count--;
-                return removedData;
             }
         }
 
@@ -254,33 +174,7 @@ namespace LinkedListUtilities
 
         public bool Remove(T item)
         {
-            if (firstNode.Item.ToString().Equals(item.ToString()))
-            {
-                RemoveFromFront();
-                return true;
-            }
-            else if (lastNode.Item.ToString().Equals(item.ToString()))
-            {
-                RemoveFromBack();
-                return true;
-            }
-            else
-            {
-                ListNode<T> currentNode = firstNode;
-                while (currentNode.Next != null)
-                {
-                    if (currentNode.Next.Item.ToString().Equals(item.ToString()))
-                    {
-                        currentNode.Next = currentNode.Next.Next;
-                        count--;
-                        if (currentNode.Next == null)
-                            lastNode = currentNode;
-                        return true;
-                    }
-                    currentNode = currentNode.Next;
-                }
-            }
-            return false;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -291,19 +185,7 @@ namespace LinkedListUtilities
 
         public bool Contains(T item)
         {
-            lock (this)
-            {
-                ListNode<T> currentNode = firstNode;
-                while (currentNode != null)
-                {
-                    if (currentNode.Item.ToString().Equals(item.ToString()))
-                    {
-                        return true;
-                    }
-                    currentNode = currentNode.Next;
-                }
-                return false;
-            }
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -312,8 +194,7 @@ namespace LinkedListUtilities
 
         public void Clear()
         {
-            firstNode = lastNode = null;
-            count = 0;
+            throw new NotImplementedException();
         }
 
         #region ICollection<T> Members
@@ -351,16 +232,12 @@ namespace LinkedListUtilities
 
         /// <summary>
         /// Custom GetEnumerator method to traverse through the list and yield the current value
+        /// Not implemented for the exercise
         /// </summary>
         /// <returns></returns>
         public IEnumerator<T> GetEnumerator()
         {
-            ListNode<T> currentNode = firstNode;
-            while (currentNode != null)
-            {
-                yield return currentNode.Item;
-                currentNode = currentNode.Next;
-            }
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -369,12 +246,17 @@ namespace LinkedListUtilities
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            throw new NotImplementedException();
         }
 
         #endregion
     }
+    
 
+    /// <summary>
+    /// Method to retrieve Nth element from slngly linked list from last
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class LinkedListOperations<T> : ILinkedListOperations<T>
     {
         public T GetNthElementFromLast(SinglyLinkedList<T> singlyLinkedList, int index)
